@@ -1,6 +1,12 @@
 # RAG 检索增强生成设计
 
-## RAG 流程
+## 状态：规划中
+
+RAG 功能尚未实现，以下是设计文档供参考。
+
+---
+
+## RAG 流程（规划）
 
 ```
 用户问题 ──► Embedding ──► 向量检索 ──► Context组装 ──► LLM生成 ──► 回答
@@ -9,7 +15,7 @@
            text2vec模型      FAISS向量库
 ```
 
-## 文档处理流程
+## 文档处理流程（规划）
 
 ```
 knowledge_base/
@@ -22,7 +28,7 @@ knowledge_base/
                                                          (FAISS)
 ```
 
-## 核心组件
+## 规划中的核心组件
 
 ### 1. Document Loader
 支持多种文档格式：
@@ -52,48 +58,43 @@ FAISS 向量数据库：
 - **混合检索**: 关键词 + 语义 (可选)
 - **重排序**: MMR (可选)
 
-## 检索增强策略
+## RAG 实现后的对话流程
 
-### 基础RAG
-```python
-# 1. 检索相关文档
-docs = retriever.get_relevant_documents(query)
-
-# 2. 组装Prompt
-prompt = f"基于以下上下文回答：\n{context}\n\n问题：{query}"
-
-# 3. LLM生成
-response = llm.invoke(prompt)
+```
+用户: "介绍一下你的项目经验"
+  → Intent: 知识问答
+  → RAG: 检索相关项目描述
+  → LLM: 组装 RAG 结果生成回答
+  → 返回: 项目介绍
 ```
 
-### 带历史记忆的RAG
-```python
-# 1. 获取对话历史
-history = memory.load_memory_variables(inputs)
+## 实现步骤（待执行）
 
-# 2. 整合历史 + 当前问题
-enhanced_query = f"历史对话：{history}\n当前问题：{query}"
+1. **文档处理**
+   - 创建 `knowledge_base/` 目录
+   - 添加简历、项目文档
+   - 实现文档加载和分割
 
-# 3. 检索 + 生成
-```
+2. **向量数据库**
+   - 选型：FAISS / ChromaDB / Milvus
+   - 实现 embedding 和存储
 
-## 知识库内容建议
+3. **检索逻辑**
+   - 实现相似度检索
+   - 优化 Top-K 参数
 
-用于面试的简历知识库：
-- 简历全文 (PDF)
-- 项目经历详细描述
-- 技术栈深入理解
-- 常见面试题答案
-
-## 性能优化
-
-1. **向量库预加载**: 启动时加载向量库，避免首次查询延迟
-2. **批量嵌入**: 文档处理时批量嵌入，减少API调用
-3. **缓存**: 热门问题结果缓存
-4. **异步**: 检索和生成可并行
+4. **集成到 Agent**
+   - 在 `get_ai_response_stream()` 中集成 RAG
+   - 组装 context 到 prompt
 
 ## 评估指标
 
 - **召回率**: 检索到的相关文档比例
 - **精确率**: 检索结果中真正相关的比例
 - **回答质量**: 生成回答的准确性、相关性
+
+## 参考资料
+
+- [LangChain RAG 教程](https://python.langchain.com/docs/tutorials/rag/)
+- [FAISS 文档](https://github.com/facebookresearch/faiss)
+- [text2vec 模型](https://huggingface.co/shibing624/text2vec-base-chinese)
