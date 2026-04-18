@@ -44,6 +44,9 @@ htmlcov/
 .tox/
 .nox/
 
+# Data (运行时数据，不提交)
+data/
+
 # Logs
 *.log
 logs/
