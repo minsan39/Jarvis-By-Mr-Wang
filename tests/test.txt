@@ -1,0 +1,19 @@
+Python 是一种广泛使用的编程语言。
+
+Python 的创始人是 Guido van Rossum。第一个公开版本发布于 1991 年。
+
+Python 的设计哲学强调代码的可读性。其语法允许程序员用更少的代码表达想法。
+
+Python 是一种解释型语言。这意味着代码在运行之前不需要编译。
+
+Python 支持多种编程范式，包括结构化、过程式、反射式、面向对象和函数式编程。
+
+Python 拥有动态类型系统和垃圾回收功能。
+
+Python 可以应用于 Web 开发、数据分析、人工智能、科学计算等多个领域。
+
+流行的 Python Web 框架包括 Django、Flask 和 FastAPI。
+
+Python 的标准库非常丰富，被称为"batteries included"。
+
+Python 代码通常比其他语言更简洁、易读。

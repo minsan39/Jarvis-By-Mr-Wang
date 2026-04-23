@@ -8,12 +8,14 @@ langchain-core>=0.1.0
 # LangChain 生态
 langchain-community>=0.0.10
 langchain-text-splitters>=0.0.1
+langchain-ollama>=0.1.0
 
 # RAG 相关
 faiss-cpu>=1.7.4
 sentence-transformers>=2.2.2
 numpy>=1.24.0
-
+chromadb>=0.4.0
+sentence-transformers>=2.2.0
 # 向量数据库（可选，根据需要）
 # chromadb>=0.4.0
 # milvus-lite>=2.3.0
@@ -59,3 +61,7 @@ pydantic-settings>=2.0.0
 
 # 缓存
 diskcache>=5.6.0
+
+# Web 服务
+flask>=2.3.0
+werkzeug>=2.3.0
