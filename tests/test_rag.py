@@ -24,5 +24,5 @@ add_to_vectorstore(chunks)
 print("   已存入向量库")
 
 print("4. 测试问答...")
-answer = create_rag_chain("Python的创始人是谁？")
+answer = create_rag_chain("林浩是谁，是怎样的一个人？")
 print(f"\n回答: {answer}")
